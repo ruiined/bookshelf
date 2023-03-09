@@ -5,17 +5,19 @@ type Book = {
   title: string;
   author: string;
   coverUrl: string;
+  isbn?: string;
 };
 
-const Book = ({ title, author, coverUrl }: Book): JSX.Element => {
+const Book = ({ title, author, coverUrl, isbn }: Book): JSX.Element => {
   return (
     <Popover className="relative">
       <Popover.Button>
         <Image
           src={coverUrl}
           alt={`${author} - ${title}`}
-          width={170}
+          width={140}
           height={270}
+          className="rounded-xl shadow-md hover:shadow-xl"
         />
       </Popover.Button>
       <Popover.Panel className="absolute z-10">

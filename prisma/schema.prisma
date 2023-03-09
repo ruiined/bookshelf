@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Book {
+  id            Int        @id @default(autoincrement())
+  authors       Author[]
+  title         String     @default("Untitled")
+  isbn          String     @unique
+  pageCount     Int        @default(0)
+  publishedDate String     @default("")
+  description   String     @default("")
+  categories    Category[]
+  coverImageUrl String     @default("")
+  status        String     @default("Unread")
+  isFavourite   Boolean    @default(false)
+  timestamp     DateTime   @default(now())
+}
+
+model Author {
+  id    Int    @id @default(autoincrement())
+  name  String @unique @default("Unknown")
+  books Book[]
+}
+
+model Category {
+  id    Int    @id @default(autoincrement())
+  name  String @unique @default("Uncategorized")
+  books Book[]
+}
