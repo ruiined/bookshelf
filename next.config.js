@@ -4,10 +4,10 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "cdn.waterstones.com",
+        protocol: "http",
+        hostname: "books.google.com",
         port: "",
-        pathname: "/bookjackets/**",
+        pathname: "/books/**",
       },
     ],
   },

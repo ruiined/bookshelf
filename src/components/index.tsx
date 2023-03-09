@@ -3,17 +3,7 @@ import AddBook from "./AddBook";
 import Image from "next/image";
 import { Book } from "@prisma/client";
 
-const IMG_URL =
-  "https://cdn.waterstones.com/bookjackets/large/9780/2413/9780241372562.jpg";
-
-const BOOK_TITLE = "The Trial";
-const BOOK_AUTHOR = "Franz Kafka";
-
-const ISBN = "9780805209990";
-
 const App = ({ books }: { books: Book[] }) => {
-  console.log({ books });
-
   return (
     <div className="py-64 px-48">
       <div className="flex flex-row justify-center h-16 mb-8">
@@ -24,16 +14,15 @@ const App = ({ books }: { books: Book[] }) => {
         </h1>
       </div>
       <AddBook />
-      {books?.map((book) => (
-        <Boo
-          key={book.id}
-          title={BOOK_TITLE}
-          author={BOOK_AUTHOR}
-          coverUrl={IMG_URL}
-          isbn={book.isbn}
-        />
-      ))}
-      <Boo title={BOOK_TITLE} author={BOOK_AUTHOR} coverUrl={IMG_URL} />
+      <div className="flex space-x-10 py-10">
+        {books?.map((book) => (
+          <Boo
+            key={book.id}
+            title={book?.title}
+            coverImageUrl={book?.coverImageUrl}
+          />
+        ))}
+      </div>
     </div>
   );
 };

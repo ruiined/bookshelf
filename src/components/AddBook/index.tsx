@@ -1,18 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import saveBook from "../../pages/api/addBook";
-import { Book } from "@prisma/client";
-
-interface BookData {
-  volumeInfo: {
-    title: string;
-    authors: string[];
-    industryIdentifiers: {
-      type: string;
-      identifier: string;
-    }[];
-  };
-}
 
 const AddBook = () => {
   const [title, setTitle] = useState("");
