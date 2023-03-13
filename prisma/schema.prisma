@@ -29,6 +29,7 @@ model Author {
   id    Int    @id @default(autoincrement())
   name  String @unique @default("Unknown")
   books Book[]
+  
 }
 
 model Category {

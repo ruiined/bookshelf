@@ -12,6 +12,7 @@ interface BookData {
     imageLinks: {
       thumbnail: string;
     };
+    categories: string[];
     industryIdentifiers: {
       type: string;
       identifier: string;
@@ -23,7 +24,7 @@ const fetchBookData = async (author: string, title: string) => {
   const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${title}+inauthor:${author}`;
   try {
     const response = await axios.get<{ items: BookData[] }>(url);
-    return response.data.items[0];
+    return response.data?.items?.[0];
   } catch (error) {
     console.error(error);
   }
@@ -32,13 +33,18 @@ const fetchBookData = async (author: string, title: string) => {
 const transformBookData = (bookData: BookData) => {
   const book = bookData?.volumeInfo;
   return {
-    // author: book?.authors[0] ?? "",
+    authors: {
+      create: book?.authors?.map((author) => ({ name: author })) ?? [],
+    },
     title: book?.title ?? "",
     isbn: book?.industryIdentifiers[0]?.identifier ?? "",
     pageCount: book?.pageCount ?? 0,
     publishedDate: book?.publishedDate ?? "",
     description: book?.description ?? "",
     coverImageUrl: book?.imageLinks?.thumbnail ?? "",
+    categories: {
+      create: book?.categories?.map((category) => ({ name: category })) ?? [],
+    },
   };
 };
 

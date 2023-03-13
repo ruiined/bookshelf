@@ -1,11 +1,16 @@
 import Head from "next/head";
 import App from "@/components";
 import { PrismaClient } from "@prisma/client";
-import type { Book } from "@prisma/client";
+import type { Book } from "@/components/Book/types";
 
 export async function getStaticProps() {
   const prisma = new PrismaClient();
-  const books = await prisma.book.findMany();
+  const books = await prisma.book.findMany({
+    include: {
+      authors: true,
+      categories: true,
+    },
+  });
   return {
     props: {
       books: JSON.parse(JSON.stringify(books)),

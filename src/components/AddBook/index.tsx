@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const AddBook = () => {
+const AddBook = ({ refreshData }: { refreshData: () => void }) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
 
+  const clearFields = () => {
+    setTitle("");
+    setAuthor("");
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     try {
-      axios.post(`/api/addBook?author=${author}&title=${title}`);
+      await axios.post(`/api/addBook?author=${author}&title=${title}`);
+      clearFields();
+      refreshData();
     } catch (error) {
       console.error(error);
     }
@@ -24,7 +30,7 @@ const AddBook = () => {
             type="text"
             value={author}
             onChange={(event) => setAuthor(event.target.value)}
-            className="mt-2 px-4 py-2 rounded-full bg-white font-normal border text-slate-500 text-xs shadow-sm border-slate-100 focus:outline-none block w-28 text-center focus:border-teal-500 focus:ring-2 tracking-wide"
+            className="mt-2 px-4 py-2 rounded-full bg-white font-normal border text-slate-500 text-xs shadow-sm border-slate-100 focus:outline-none block w-28 text-center focus:border-purple-800 focus:ring-offset-1 focus:ring-teal-500 focus:ring-1 tracking-wide"
           />
         </label>
         <label className="block text-xs font-medium tracking-wider text-slate-500 text-center">
@@ -33,7 +39,8 @@ const AddBook = () => {
             type="text"
             value={title}
             onChange={(event) => setTitle(event.target.value)}
-            className="mt-2 px-4 py-2 rounded-full bg-white font-normal border text-slate-500 text-xs shadow-sm border-slate-100 focus:outline-none block w-28 text-center focus:border-purple-800 focus:ring-2 tracking-wide"
+            required
+            className="mt-2 px-4 py-2 rounded-full bg-white font-normal border text-slate-500 text-xs shadow-sm border-slate-100 focus:outline-none block w-28 text-center focus:border-purple-800 focus:ring-offset-1 focus:ring-teal-500 focus:ring-1 tracking-wide"
           />
         </label>
         <br />
