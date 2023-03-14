@@ -24,9 +24,9 @@ const App = ({ books }: { books: Book[] }) => {
         </h1>
       </div>
       <AddBook refreshData={refreshData} />
-      <div className="font-bold text-slate-200 text-3xl text-center">
+      {/* <div className="font-bold text-slate-200 text-3xl text-center">
         {books?.length}
-      </div>
+      </div> */}
       <div className="container mx-auto">
         <div className="grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 py-10">
           {books?.map((book) => (

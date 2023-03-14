@@ -13,7 +13,7 @@ const AddBook = ({ refreshData }: { refreshData: () => void }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await axios.post(`/api/addBook?author=${author}&title=${title}`);
+      await axios.post(`/api/add?author=${author}&title=${title}`);
       clearFields();
       refreshData();
     } catch (error) {

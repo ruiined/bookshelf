@@ -3,6 +3,7 @@ import type { Book } from "@/components/Book/types";
 import Image from "next/image";
 import axios from "axios";
 import router from "next/router";
+import Delete from "@/assets/svgs/delete.svg";
 
 type Modal = {
   isOpen: boolean;
@@ -17,13 +18,23 @@ const Modal = ({ isOpen, setIsOpen, book }: Modal) => {
   const closeModal = () => setIsOpen(false);
   const authors = book?.authors?.map(({ name }) => name)?.join(", ");
   const categories = book?.categories?.map(({ name }) => name)?.join(", ");
-  const handleFavourite = () => {
-    console.log("favourite");
-  };
-  const handleDelete = async (e: React.FormEvent<HTMLFormElement>) => {
+
+  const handleFavourite = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
-      await axios.post(`/api/deleteBook?isbn=${book?.isbn}`);
+      await axios.post(
+        `/api/favourite?isbn=${book?.isbn}&fav=${!book?.isFavourite}`
+      );
+      refreshData();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleDelete = async (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    try {
+      await axios.post(`/api/delete?isbn=${book?.isbn}`);
       refreshData();
     } catch (error) {
       console.error(error);
@@ -57,7 +68,7 @@ const Modal = ({ isOpen, setIsOpen, book }: Modal) => {
                   className="text-lg font-medium leading-6 text-gray-900"
                 >
                   <span className="cursor-pointer" onClick={handleFavourite}>
-                    {book?.isFavourite ? "❤️ " : "🤍"} {book?.title}
+                    {book?.isFavourite ? "❤️" : "🤍"} {book?.title}
                   </span>
                 </Dialog.Title>
               )}
@@ -69,20 +80,20 @@ const Modal = ({ isOpen, setIsOpen, book }: Modal) => {
                 <p className="text-sm text-gray-500">{book?.description}</p>
               </div>
 
-              <div className="mt-4">
-                <button
+              {/* <button
                   type="button"
                   className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                   onClick={closeModal}
                 >
                   x
-                </button>
+                </button> */}
+              <div className="flex justify-end mt-5">
                 <button
                   type="button"
-                  className="inline-flex justify-center rounded-md border border-transparent bg-red-100 mx-5 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
                   onClick={handleDelete}
+                  className="focus:outline-none"
                 >
-                  🗑️
+                  <Delete className="fill-gray-400 drop-shadow-md transition-all translate-y-1 hover:translate-y-0.5 hover:fill-gray-500" />
                 </button>
               </div>
             </div>
