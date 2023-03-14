@@ -1,6 +1,8 @@
 import { Dialog } from "@headlessui/react";
 import type { Book } from "@/components/Book/types";
 import Image from "next/image";
+import axios from "axios";
+import router from "next/router";
 
 type Modal = {
   isOpen: boolean;
@@ -9,15 +11,25 @@ type Modal = {
 };
 
 const Modal = ({ isOpen, setIsOpen, book }: Modal) => {
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
   const closeModal = () => setIsOpen(false);
   const authors = book?.authors?.map(({ name }) => name)?.join(", ");
   const categories = book?.categories?.map(({ name }) => name)?.join(", ");
   const handleFavourite = () => {
     console.log("favourite");
   };
-  const handleDelete = () => {
-    console.log("delete");
+  const handleDelete = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      await axios.post(`/api/deleteBook?isbn=${book?.isbn}`);
+      refreshData();
+    } catch (error) {
+      console.error(error);
+    }
   };
+
   return (
     <Dialog
       as="div"

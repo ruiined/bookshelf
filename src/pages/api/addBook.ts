@@ -1,4 +1,4 @@
-import { Book, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
