@@ -4,6 +4,9 @@ import Image from "next/image";
 import axios from "axios";
 import router from "next/router";
 import Delete from "@/assets/svgs/delete.svg";
+import HeartFilled from "@/assets/svgs/heart-filled.svg";
+import HeartEmpty from "@/assets/svgs/heart-empty.svg";
+import Close from "@/assets/svgs/close.svg";
 
 type Modal = {
   isOpen: boolean;
@@ -59,17 +62,19 @@ const Modal = ({ isOpen, setIsOpen, book }: Modal) => {
               quality={100}
               className="absolute w-full h-full object-cover blur-md"
             />
-            {/* <div className="bg-gradient-to-r from-cyan-500 to-blue-500"> */}
-            {/* </div> */}
+            <div className="fixed right-3 top-3">
+              <Close
+                className="fill-slate-300 drop-shadow-lg transition-all cursor-pointer hover:fill-slate-500"
+                onClick={closeModal}
+              />
+            </div>
             <div className="m-20 p-6 bg-white backdrop-grayscale rounded-2xl shadow-2xl">
               {book?.title && (
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
                 >
-                  <span className="cursor-pointer" onClick={handleFavourite}>
-                    {book?.isFavourite ? "❤️" : "🤍"} {book?.title}
-                  </span>
+                  {book?.title}
                 </Dialog.Title>
               )}
               <h3>{authors}</h3>
@@ -79,21 +84,24 @@ const Modal = ({ isOpen, setIsOpen, book }: Modal) => {
               <div className="mt-2 max-h-64 overflow-y-hidden">
                 <p className="text-sm text-gray-500">{book?.description}</p>
               </div>
-
-              {/* <button
+              <div className="flex w-full justify-between mt-5">
+                <button
                   type="button"
-                  className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                  onClick={closeModal}
+                  onClick={handleFavourite}
+                  className="focus:outline-none"
                 >
-                  x
-                </button> */}
-              <div className="flex justify-end mt-5">
+                  {book?.isFavourite ? (
+                    <HeartFilled className="fill-red-400 drop-shadow-sm transition-all translate-y-1 hover:translate-y-0.5 hover:fill-red-500 mt-0.5" />
+                  ) : (
+                    <HeartEmpty className="fill-red-400 drop-shadow-sm transition-all translate-y-1 hover:translate-y-0.5 hover:fill-red-500 mt-0.5" />
+                  )}
+                </button>
                 <button
                   type="button"
                   onClick={handleDelete}
                   className="focus:outline-none"
                 >
-                  <Delete className="fill-gray-400 drop-shadow-md transition-all translate-y-1 hover:translate-y-0.5 hover:fill-gray-500" />
+                  <Delete className="fill-gray-300 drop-shadow-sm transition-all translate-y-1 hover:translate-y-0.5 hover:fill-gray-400" />
                 </button>
               </div>
             </div>

@@ -5,9 +5,11 @@ import Modal from "../Modal";
 
 const Book = ({ book }: { book: Book }): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleClick = () => {
     setIsModalOpen(true);
   };
+
   return (
     <div className="flex rounded-xl" onClick={handleClick}>
       <Image
