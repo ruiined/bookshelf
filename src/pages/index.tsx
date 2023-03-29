@@ -1,7 +1,7 @@
 import Head from "next/head";
 import App from "@/components";
 import { PrismaClient } from "@prisma/client";
-import type { Book } from "@/components/Book/types";
+import type { Book } from "@/components/BookCover/types";
 
 export async function getStaticProps() {
   const prisma = new PrismaClient();
