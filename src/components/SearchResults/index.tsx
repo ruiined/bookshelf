@@ -1,12 +1,15 @@
 import { Dialog } from "@headlessui/react";
 import Close from "@/assets/svgs/close.svg";
+import Book from "../BookCover";
 
 const SearchResults = ({
   isOpen,
   setIsOpen,
+  results,
 }: {
   isOpen: boolean;
   setIsOpen: (arg0: boolean) => void;
+  results: Book[];
 }) => {
   return (
     <Dialog

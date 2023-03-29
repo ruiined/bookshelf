@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const deleteBook = async (req: NextApiRequest, res: NextApiResponse) => {
+const favouriteBook = async (req: NextApiRequest, res: NextApiResponse) => {
   const { isbn, fav } = req.query;
   const prisma = new PrismaClient();
   try {
@@ -19,4 +19,4 @@ const deleteBook = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default deleteBook;
+export default favouriteBook;

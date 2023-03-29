@@ -92,7 +92,7 @@ const Modal = ({ isOpen, setIsOpen, book }: Modal) => {
               </h3>
               <h3>{categories}</h3>
               <div className="mt-2 max-h-64 overflow-y-hidden">
-                <p className="text-sm text-gray-500">{book?.description}</p>
+                <p className="text-xs text-gray-500">{book?.description}</p>
               </div>
               <div className="flex w-full justify-between mt-5">
                 <button

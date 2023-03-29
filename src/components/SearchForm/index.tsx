@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import SearchResults from "../SearchResults";
+import { Book } from "../BookCover/types";
 
 const AddBook = ({ refreshData }: { refreshData: () => void }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
+  const [results, setResults] = useState<Book[]>([]);
 
   const clearFields = () => {
     setTitle("");
@@ -15,9 +17,12 @@ const AddBook = ({ refreshData }: { refreshData: () => void }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      // await axios.post(`/api/add?author=${author}&title=${title}`);
-      // clearFields();
+      const data = await axios.get(
+        `/api/search?author=${author}&title=${title}`
+      );
+      clearFields();
       setIsModalOpen(true);
+      setResults(data?.data?.books);
       // refreshData();
     } catch (error) {
       console.error(error);
@@ -56,7 +61,11 @@ const AddBook = ({ refreshData }: { refreshData: () => void }) => {
           </button>
         </div>
       </form>
-      <SearchResults isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+      <SearchResults
+        isOpen={isModalOpen}
+        setIsOpen={setIsModalOpen}
+        results={results}
+      />
     </>
   );
 };
