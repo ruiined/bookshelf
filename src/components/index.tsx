@@ -1,7 +1,7 @@
-import Boo from "./BookCover";
+import Boo from "./Book/Cover";
 import AddBook from "./Search/Form";
 import Image from "next/image";
-import type { Book } from "@/components/BookCover/types";
+import type { Book } from "@/lib/types";
 import router from "next/router";
 import { useEffect } from "react";
 

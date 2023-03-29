@@ -1,4 +1,4 @@
-import Book from "../BookCover";
+import type { Book } from "@/lib/types";
 
 const SearchResultsCard = ({ book }: { book: Book }) => {
   return (

@@ -1,5 +1,5 @@
 import { Dialog } from "@headlessui/react";
-import type { Book } from "@/components/BookCover/types";
+import type { Book } from "@/lib/types";
 import Image from "next/image";
 import axios from "axios";
 import router from "next/router";

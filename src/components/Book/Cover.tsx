@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { Book } from "./types";
+import type { Book } from "@/lib/types";
 import { useState } from "react";
-import Modal from "../BookDetails";
+import Modal from "./Details";
 
 const Book = ({ book }: { book: Book }): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);

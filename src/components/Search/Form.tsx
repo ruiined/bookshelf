@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import SearchResults from "./Results";
-import { Book } from "../BookCover/types";
+import type { Book } from "@/lib/types";
 
 const SearchForm = ({ refreshData }: { refreshData: () => void }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

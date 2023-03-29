@@ -1,3 +1,7 @@
+import type { Author, Book as BookModel, Category } from "@prisma/client";
+
+export type Book = BookModel & { authors: Author[]; categories: Category[] };
+
 export interface BookData {
   volumeInfo: {
     title: string;
