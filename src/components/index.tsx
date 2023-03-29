@@ -1,5 +1,5 @@
 import Boo from "./BookCover";
-import AddBook from "./SearchForm";
+import AddBook from "./Search/Form";
 import Image from "next/image";
 import type { Book } from "@/components/BookCover/types";
 import router from "next/router";

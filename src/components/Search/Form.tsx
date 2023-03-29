@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import SearchResults from "../SearchResults";
+import SearchResults from "./Results";
 import { Book } from "../BookCover/types";
 
-const AddBook = ({ refreshData }: { refreshData: () => void }) => {
+const SearchForm = ({ refreshData }: { refreshData: () => void }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -70,4 +70,4 @@ const AddBook = ({ refreshData }: { refreshData: () => void }) => {
   );
 };
 
-export default AddBook;
+export default SearchForm;
