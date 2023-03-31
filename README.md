@@ -4,7 +4,7 @@ _[Technologies](#technologies) | [Installation](#installation) | [Preview](#prev
 
 Personal library application that tracks your reading.
 
-- 📕 Find & add books
+- 📕 Find & add books by title and/or author
 - 📗 Favourite, edit, take notes, categorize & tag
 - 📘 Track 'to read', 'currently reading' and 'read'
 
