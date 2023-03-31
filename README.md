@@ -39,9 +39,11 @@ Personal library application that tracks your reading.
 1. Clone the repository & install the dependencies
 2. Use `sqlite` for a local database
 3. Add your `.db` file's path in your `.env` file:
+
    ```js
    DATABASE_URL = "file:./dev.db"; // relative to the '/prisma' folder
    ```
+
 4. Run `npm run dev`
 5. Visit "http://localhost:3000"
 
