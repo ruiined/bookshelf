@@ -1,4 +1,14 @@
 import { BookData } from "@/lib/types";
+import { Author, Category, Book } from "@prisma/client";
+
+export type DbBookData = Partial<Book> & {
+  authors: {
+    create: Partial<Author>[];
+  };
+  categories: {
+    create: Partial<Category>[];
+  };
+};
 
 export const transformBookData = (bookData: BookData) => {
   const book = bookData?.volumeInfo;
