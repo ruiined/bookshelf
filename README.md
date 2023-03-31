@@ -45,7 +45,7 @@ Personal library application that tracks your reading.
    ```
 
 4. Run `npm run dev`
-5. Visit "http://localhost:3000"
+5. Visit http://localhost:3000
 
 ## Preview
 
