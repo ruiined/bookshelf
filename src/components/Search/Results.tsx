@@ -1,6 +1,6 @@
 import { Dialog } from "@headlessui/react";
 import Close from "@/assets/svgs/close.svg";
-import type { Book } from "@/lib/types";
+import type { FormattedBookData } from "@/lib/types";
 import Card from "./Card";
 
 const SearchResults = ({
@@ -10,7 +10,7 @@ const SearchResults = ({
 }: {
   isOpen: boolean;
   setIsOpen: (arg0: boolean) => void;
-  results: Book[];
+  results: FormattedBookData[];
 }) => {
   return (
     <Dialog
@@ -21,7 +21,7 @@ const SearchResults = ({
     >
       <div className="fixed inset-0 overflow-y-auto bg-black bg-opacity-70">
         <div className="flex min-h-full items-center justify-center p-4 text-center">
-          <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all p-8">
+          <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all p-8">
             <div className="fixed right-3 top-3">
               <Close
                 className="fill-slate-300 drop-shadow-lg transition-all cursor-pointer hover:fill-slate-500"
@@ -34,11 +34,11 @@ const SearchResults = ({
             >
               Search
             </Dialog.Title>
-            {/* <div className="m-20 p-6 bg-white backdrop-grayscale rounded-2xl shadow-2xl"> */}
-            {results?.map((book) => (
-              <Card key={book.isbn ?? book.id} book={book} />
-            ))}
-            {/* </div> */}
+            <div className="grid grid-cols-4 gap-4 items-stretch justify-items-center">
+              {results?.map((book) => (
+                <Card key={book.isbn ?? book.id} book={book} />
+              ))}
+            </div>
           </Dialog.Panel>
         </div>
       </div>

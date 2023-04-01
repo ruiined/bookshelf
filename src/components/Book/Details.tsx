@@ -56,7 +56,7 @@ const Modal = ({ isOpen, setIsOpen, book }: Modal) => {
         <div className="flex min-h-full items-center justify-center p-4 text-center">
           <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all">
             <Image
-              src={book?.coverImageUrl ?? "/book-placeholder.png"}
+              src={book?.coverImageUrl || "/book-placeholder.png"}
               alt={`${book?.title}`}
               width={1000}
               height={1000}

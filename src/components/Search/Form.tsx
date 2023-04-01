@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import SearchResults from "./Results";
-import type { Book } from "@/lib/types";
+import type { FormattedBookData } from "@/lib/types";
 
 const SearchForm = ({ refreshData }: { refreshData: () => void }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
-  const [results, setResults] = useState<Book[]>([]);
+  const [results, setResults] = useState<FormattedBookData[]>([]);
 
   const clearFields = () => {
     setTitle("");

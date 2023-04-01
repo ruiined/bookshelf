@@ -36,7 +36,7 @@ export const fetchBooksByTitleAndAuthor = async (
 
   try {
     const response = await axios.get<{ items: BookData[] }>(url);
-    return response.data?.items?.slice(0, 5);
+    return response.data?.items?.slice(0, 8);
   } catch (error) {
     console.error(error);
   }

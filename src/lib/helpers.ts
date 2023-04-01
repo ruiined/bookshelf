@@ -1,27 +1,17 @@
-import { BookData } from "@/lib/types";
-import { Author, Category, Book } from "@prisma/client";
+import { BookData, FormattedBookData } from "@/lib/types";
 
-export type DbBookData = Partial<Book> & {
-  authors: {
-    create: Partial<Author>[];
-  };
-  categories: {
-    create: Partial<Category>[];
-  };
-};
-
-export const transformBookData = (bookData: BookData) => {
+export const transformBookData = (bookData: BookData): FormattedBookData => {
   const book = bookData?.volumeInfo;
   return {
-    authors: {
-      create: book?.authors?.map((author) => ({ name: author })) ?? [],
-    },
     title: book?.title ?? "",
     isbn: book?.industryIdentifiers[0]?.identifier ?? "",
     pageCount: book?.pageCount ?? 0,
     publishedDate: book?.publishedDate ?? "",
     description: book?.description ?? "",
     coverImageUrl: book?.imageLinks?.thumbnail ?? "",
+    authors: {
+      create: book?.authors?.map((author) => ({ name: author })) ?? [],
+    },
     categories: {
       create: book?.categories?.map((category) => ({ name: category })) ?? [],
     },

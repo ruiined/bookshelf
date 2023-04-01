@@ -19,3 +19,16 @@ export interface BookData {
     }[];
   };
 }
+
+export type FormattedBookData = Omit<Book, "authors" | "categories"> & {
+  authors: {
+    create: {
+      name: string;
+    }[];
+  };
+  categories: {
+    create: {
+      name: string;
+    }[];
+  };
+};
