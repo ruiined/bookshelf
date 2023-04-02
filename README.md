@@ -1,5 +1,7 @@
 # Bookshelf
 
+[![Tests](https://github.com/ruiined/bookshelf/actions/workflows/tests.yml/badge.svg)](https://github.com/ruiined/bookshelf/actions/workflows/tests.yml)
+
 _[Technologies](#technologies) | [Installation](#installation) | [Preview](#preview)_
 
 Personal library application that tracks your reading.
