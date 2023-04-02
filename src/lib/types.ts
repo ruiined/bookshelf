@@ -20,7 +20,13 @@ export interface BookData {
   };
 }
 
-export type FormattedBookData = Omit<Book, "authors" | "categories"> & {
+type OmitId<T extends object> = T & {
+  id?: never;
+};
+
+export type FormattedBookData = OmitId<
+  Partial<Omit<Book, "authors" | "categories">>
+> & {
   authors: {
     create: {
       name: string;
