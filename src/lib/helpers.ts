@@ -1,4 +1,4 @@
-import { BookData, FormattedBookData } from "@/lib/types";
+import { BookData, FormattedBookData } from "@lib/types";
 
 export const transformBookData = (bookData: BookData): FormattedBookData => {
   const book = bookData?.volumeInfo;

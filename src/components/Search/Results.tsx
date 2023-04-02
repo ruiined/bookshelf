@@ -1,6 +1,6 @@
 import { Dialog } from "@headlessui/react";
-import Close from "@/assets/svgs/close.svg";
-import type { FormattedBookData } from "@/lib/types";
+import Close from "@icons/close.svg";
+import type { FormattedBookData } from "@lib/types";
 import Card from "./Card";
 
 const SearchResults = ({

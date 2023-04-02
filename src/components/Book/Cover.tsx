@@ -1,9 +1,9 @@
 import Image from "next/image";
-import type { Book } from "@/lib/types";
+import type { Book } from "@lib/types";
 import { useState } from "react";
 import Modal from "./Details";
 
-const Book = ({ book }: { book: Book }): JSX.Element => {
+const Cover = ({ book }: { book: Book }): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleClick = () => {
@@ -28,4 +28,4 @@ const Book = ({ book }: { book: Book }): JSX.Element => {
   );
 };
 
-export default Book;
+export default Cover;

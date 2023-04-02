@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BookData } from "@/lib/types";
+import { BookData } from "@lib/types";
 
 const GOOGLE_URL = "https://www.googleapis.com/books/v1/volumes?q=";
 

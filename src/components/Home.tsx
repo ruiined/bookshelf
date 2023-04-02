@@ -1,18 +1,11 @@
 import Boo from "./Book/Cover";
 import AddBook from "./Search/Form";
 import Image from "next/image";
-import type { Book } from "@/lib/types";
-import router from "next/router";
-import { useEffect } from "react";
+import type { Book } from "@lib/types";
+import { useRefresh } from "@lib/hooks";
 
 const App = ({ books }: { books: Book[] }) => {
-  const refreshData = () => {
-    router.replace(router.asPath);
-  };
-
-  useEffect(() => {
-    refreshData();
-  }, []);
+  useRefresh();
 
   return (
     <div className="py-64 px-48">
@@ -23,7 +16,7 @@ const App = ({ books }: { books: Book[] }) => {
           <span className="text-purple-800">shelf</span>
         </h1>
       </div>
-      <AddBook refreshData={refreshData} />
+      <AddBook />
       {/* <div className="font-bold text-slate-200 text-3xl text-center">
         {books?.length}
       </div> */}

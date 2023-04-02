@@ -1,4 +1,4 @@
-import { deleteBookInDb } from "@/lib/db";
+import { deleteBookInDb } from "@lib/db";
 import { NextApiRequest, NextApiResponse } from "next";
 
 const deleteBook = async (req: NextApiRequest, res: NextApiResponse) => {

@@ -1,4 +1,4 @@
-import { updateBookInDb } from "@/lib/db";
+import { updateBookInDb } from "@lib/db";
 import { NextApiRequest, NextApiResponse } from "next";
 
 const favouriteBook = async (req: NextApiRequest, res: NextApiResponse) => {

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { transformBookData } from "@/lib/helpers";
-import { fetchBooksByTitleAndAuthor } from "@/lib/api";
+import { transformBookData } from "@lib/helpers";
+import { fetchBooksByTitleAndAuthor } from "@lib/api";
 
 const searchBooks = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req.query;

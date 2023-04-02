@@ -1,13 +1,13 @@
 import { Dialog } from "@headlessui/react";
-import type { Book } from "@/lib/types";
+import type { Book } from "@lib/types";
 import Image from "next/image";
 import axios from "axios";
 import router from "next/router";
-import Delete from "@/assets/svgs/delete.svg";
-import HeartFilled from "@/assets/svgs/heart-filled.svg";
-import HeartEmpty from "@/assets/svgs/heart-empty.svg";
-import Close from "@/assets/svgs/close.svg";
-import Edit from "@/assets/svgs/edit.svg";
+import Delete from "@icons/delete.svg";
+import HeartFilled from "@icons/heart-filled.svg";
+import HeartEmpty from "@icons/heart-empty.svg";
+import Close from "@icons/close.svg";
+import Edit from "@icons/edit.svg";
 
 type Modal = {
   isOpen: boolean;

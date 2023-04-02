@@ -1,6 +1,6 @@
-import type { FormattedBookData } from "@/lib/types";
+import type { FormattedBookData } from "@lib/types";
 import Image from "next/image";
-import Done from "@/assets/svgs/done.svg";
+import Done from "@icons/done.svg";
 
 const SearchResultsCard = ({ book }: { book: FormattedBookData }) => {
   const handleClick = () => {};
